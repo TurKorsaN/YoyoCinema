@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activity.DetailActivity">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.alpersevindik.yoyocinema.data.model.MovieDetail" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/backdrop"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:imageUrl="@{item.backdrop_path}"
+                app:layout_constraintDimensionRatio="w,9:16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/poster"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="56dp"
+                app:imageUrl="@{item.poster_path}"
+                app:layout_constraintDimensionRatio="w,3:2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/backdrop"
+                app:layout_constraintWidth_percent="0.4" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:gravity="center"
+                android:text="@{item.title}"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/poster"
+                tools:text="@tools:sample/lorem" />
+
+            <TextView
+                android:id="@+id/overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{item.overview}"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                tools:text="@tools:sample/lorem/random" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@android:drawable/btn_star_big_off"
+                android:tint="@color/colorGrey"
+                app:fabSize="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/backdrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/backdrop" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
